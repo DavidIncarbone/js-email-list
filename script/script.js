@@ -71,12 +71,13 @@ function regenerateMails() {
 
     let arrayMails = [];
 
-    const liNode = document.querySelectorAll("li");
+    let liNode = document.querySelectorAll("li");
     console.log(liNode);
 
     for (let li of liNode) {
 
         li.classList.add("d-none");
+
 
     }
     for (let i = 1; i <= 10; i++) {
@@ -92,7 +93,7 @@ function regenerateMails() {
 
                     let template = "";
                     arrayMails.forEach((mail) => {
-                        template += ` <li><a href="#" class="list-group-item list-group-item-action text-primary" aria-current="true">
+                        template += ` <li><a href="#" class="list-group-item list-group-item-action text-white bg-black" aria-current="true">
                 ${mail}
             </a></li> `
                         ul.innerHTML = template;
@@ -116,8 +117,6 @@ function regenerateMails() {
             }
             )
     }
-
-
 }
 
 // print mail's system
@@ -127,7 +126,7 @@ function printMails() {
 
     let template = "";
     arrayMails.forEach((mail) => {
-        template += ` <li><a href="#" class="list-group-item list-group-item-action text-primary" aria-current="true">
+        template += ` <li><a href="#" class="list-group-item list-group-item-action text-white bg-black" aria-current="true">
                 ${mail}
             </a></li> `
         ul.innerHTML = template;
@@ -136,58 +135,3 @@ function printMails() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

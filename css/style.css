@@ -2,6 +2,18 @@ img {
     width: 100%;
 }
 
+body {
+
+    background-image: url(https://static5.depositphotos.com/1030375/396/i/450/depositphotos_3969146-stock-photo-abstract-tech-background.jpg);
+    background-size: cover;
+}
+
+
 li {
     list-style: none;
+    padding: 5px;
+}
+
+a {
+    display: inline-block;
 }
