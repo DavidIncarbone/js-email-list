@@ -5,49 +5,128 @@ console.clear();
 
 https://flynn.boolean.careers/exercises/api/random/mail */
 
-const ul = document.querySelector("main ul:first-child")
+// GET ELEMENTS FROM indexedDB.HTML
+
+const main = document.querySelector("main");
+console.log(main);
+const ul = document.querySelector(".list-group")
 console.log(ul);
+const button = document.querySelector("button");
+console.log(button);
 
-const arrayMails = [];
+// Empty Array for mails
 
-for (let i = 1; i <= 10; i++) {
+let arrayMails = [];
 
-    axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
-        .then((mail) => {
-            console.log(mail.data);
+// EVENTS
 
-            const singleMail = mail.data.response;
-            arrayMails.push(singleMail);
+button.addEventListener("click", regenerateMails);
 
-            if (arrayMails.length === 10) {
+// CALL FUNCTION
 
-                printMails(arrayMails);
+generateMails(arrayMails);
+
+
+// FUNCTIONS
+
+// Mails generated with loading page
+
+function generateMails() {
+    for (let i = 1; i <= 10; i++) {
+
+        axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+            .then((mail) => {
+                console.log(mail.data);
+
+                const singleMail = mail.data.response;
+                arrayMails.push(singleMail);
+
+                if (arrayMails.length === 10) {
+
+                    printMails(arrayMails);
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+
+            })
+            .finally(() => {
+                if (arrayMails.length === 10) {
+                    console.log("Tutte le risposte sono state ricevute");
+                }
 
             }
+            )
+    }
 
-        })
-        .catch((error) => {
-            console.log(error);
-
-        })
-        .finally(() => {
-            if (arrayMails.length === 10) {
-                console.log("Tutte le risposte sono state ricevute");
-            }
-
-        }
-        )
 }
 
+// mails generated with button
+
+function regenerateMails() {
+
+    let arrayMails = [];
+
+    const liNode = document.querySelectorAll("li");
+    console.log(liNode);
+
+    for (let li of liNode) {
+
+        li.classList.add("d-none");
+
+    }
+    for (let i = 1; i <= 10; i++) {
+
+        axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+            .then((mail) => {
+                console.log(mail.data);
+
+                const singleMail = mail.data.response;
+                arrayMails.push(singleMail);
+
+                if (arrayMails.length === 10) {
+
+                    let template = "";
+                    arrayMails.forEach((mail) => {
+                        template += ` <li><a href="#" class="list-group-item list-group-item-action text-primary" aria-current="true">
+                ${mail}
+            </a></li> `
+                        ul.innerHTML = template;
+                    })
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+
+            })
+            .finally(() => {
+                if (arrayMails.length === 10) {
+                    console.log("Tutte le risposte sono state ricevute");
+                }
+
+            }
+            )
+    }
 
 
-function printMails(myArray) {
+}
+
+// print mail's system
+
+
+function printMails() {
 
     let template = "";
     arrayMails.forEach((mail) => {
-        template += `<li class="list-group-item">${mail}</li > `
+        template += ` <li><a href="#" class="list-group-item list-group-item-action text-primary" aria-current="true">
+                ${mail}
+            </a></li> `
         ul.innerHTML = template;
     })
+
+
 
 }
 
