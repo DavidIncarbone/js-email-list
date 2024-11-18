@@ -13,6 +13,9 @@ const ul = document.querySelector(".list-group")
 console.log(ul);
 const button = document.querySelector("button");
 console.log(button);
+const p = document.querySelector("p");
+console.log(p);
+
 
 // Empty Array for mails
 
@@ -93,7 +96,11 @@ function regenerateMails() {
                 ${mail}
             </a></li> `
                         ul.innerHTML = template;
+                        p.classList.add("d-none");
                     })
+                } else {
+
+                    p.classList.remove("d-none");
                 }
 
             })
