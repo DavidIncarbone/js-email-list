@@ -71,15 +71,17 @@ function regenerateMails() {
 
     let arrayMails = [];
 
-    let liNode = document.querySelectorAll("li");
-    console.log(liNode);
+    ul.innerHTML = "";
 
-    for (let li of liNode) {
+    // let liNode = document.querySelectorAll("li");
+    // console.log(liNode);
 
-        li.classList.add("d-none");
+    // for (let li of liNode) {
+
+    //     li.classList.add("d-none");
 
 
-    }
+    // }
     for (let i = 1; i <= 10; i++) {
 
         axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
